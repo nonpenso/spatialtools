@@ -5,8 +5,8 @@
 #              Jenness Enterprises (www.jennessent.com) specifically for 
 #              preparing input txt files for the Conefor software 
 #              (CS, www.conefor.org).
-# Description: From a polygon shapefile create two TXT files: 
-#              - Nodes: list of the IDs and areas of the polygons
+# Description: From a polygon shapefile two TXT files are created: 
+#              - Nodes: list of the IDs and areas of each polygon
 #              - Distances: minimum Euclidean distance between every pair of 
 #                polygons
 # Author:      Nonpenso
