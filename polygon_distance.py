@@ -3,7 +3,7 @@
 # Purpose:     A python script created for replacing the “Conefor Inputs”, a 
 #              custom-made GIS extension for ESRI ArcGIS developed by Jeff 
 #              Jenness Enterprises (www.jennessent.com) specifically for the 
-#              Conefor Sensinode software (CS, www.conefor.org).
+#              Conefor software (CS, www.conefor.org).
 # Description: From a polygon shapefile create two TXT files: 
 #              - Nodes: list of the IDs and areas of the polygons
 #              - Distances: minimum Euclidean distance between every pair of 
@@ -12,11 +12,15 @@
 # Created:     08-07-2014
 #-------------------------------------------------------------------------------
 
-def poly_dist(shp, outfolder):
+from osgeo import ogr
+from shapely.wkb import loads
+import itertools
+
+def poly_dist(inshp, outfolder):
     driver = ogr.GetDriverByName('ESRI Shapefile')
-    dataset = driver.Open(shp, 0)
+    dataset = driver.Open(inshp, 0)
     layer = dataset.GetLayer()
-    shpname = shp.split('\\')[-1].split('.')[0]
+    shpname = inshp.split('\\')[-1].split('.')[0]
 
     distfile = outfolder + r"\dist_" + shpname + ".txt"
     nodefile = outfolder + r"\node_" + shpname + ".txt"
