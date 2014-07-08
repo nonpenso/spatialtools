@@ -1,0 +1,45 @@
+#-------------------------------------------------------------------------------
+# Name:        Polygon distance
+# Purpose:     A python script created for replacing the “Conefor Inputs”, a 
+#              custom-made GIS extension for ESRI ArcGIS developed by Jeff 
+#              Jenness Enterprises (www.jennessent.com) specifically for the 
+#              Conefor Sensinode software (CS, www.conefor.org).
+# Description: From a polygon shapefile create two TXT files: 
+#              - Nodes: list of the IDs and areas of the polygons
+#              - Distances: minimum Euclidean distance between every pair of 
+#                polygons
+# Author:      Nonpenso
+# Created:     08-07-2014
+#-------------------------------------------------------------------------------
+
+def poly_dist(shp, outfolder):
+    driver = ogr.GetDriverByName('ESRI Shapefile')
+    dataset = driver.Open(shp, 0)
+    layer = dataset.GetLayer()
+    shpname = shp.split('\\')[-1].split('.')[0]
+
+    distfile = outfolder + r"\dist_" + shpname + ".txt"
+    nodefile = outfolder + r"\node_" + shpname + ".txt"
+    d_obj = open(distfile, "w")
+    n_obj = open(nodefile, "w")
+
+    checklist = []
+    for ind in itertools.combinations(xrange(layer.GetFeatureCount()),2):
+        feat1 = layer.GetFeature(ind[0])
+        feat2 = layer.GetFeature(ind[1])
+
+        geom1 = loads(feat1.GetGeometryRef().ExportToWkb())
+        geom2 = loads(feat2.GetGeometryRef().ExportToWkb())
+
+        dist = geom1.distance(geom2)
+        d_obj.write(str(ind[0]) + '\t' + str(ind[1]) + '\t' + str(dist) + '\n')
+
+        if not ind[0] in checklist:
+            checklist.append(ind[0])
+            n_obj.write(str(ind[0]) + '\t' + str(geom1.area) + '\n')
+        if not ind[1] in checklist:
+            checklist.append(ind[1])
+            n_obj.write(str(ind[1]) + '\t' + str(geom2.area) + '\n')
+
+    d_obj.close()
+    n_obj.close()
