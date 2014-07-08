@@ -2,8 +2,9 @@
 # Name:        Polygon distance
 # Purpose:     A python script created for replacing the “Conefor Inputs”, a 
 #              custom-made GIS extension for ESRI ArcGIS developed by Jeff 
-#              Jenness Enterprises (www.jennessent.com) specifically for the 
-#              Conefor software (CS, www.conefor.org).
+#              Jenness Enterprises (www.jennessent.com) specifically for 
+#              preparing input txt files for the Conefor software 
+#              (CS, www.conefor.org).
 # Description: From a polygon shapefile create two TXT files: 
 #              - Nodes: list of the IDs and areas of the polygons
 #              - Distances: minimum Euclidean distance between every pair of 
