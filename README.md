@@ -1,4 +1,4 @@
 Spatialtools
 ============
 
-Python scripts for GIS computations with raster files
+Python scripts for GIS computations
