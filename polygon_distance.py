@@ -1,14 +1,16 @@
 #-------------------------------------------------------------------------------
-# Name:        Polygon distance
+# Name:        Euclidean distance between polygons
 # Purpose:     A python script created for replacing the “Conefor Inputs”, a 
-#              custom-made GIS extension for ESRI ArcGIS developed by Jeff 
+#              custom-made GIS extension for ESRI ArcGIS, developed by Jeff 
 #              Jenness Enterprises (www.jennessent.com) specifically for 
-#              preparing input txt files for the Conefor software 
+#              preparing input TXT files for the Conefor software 
 #              (www.conefor.org).
-# Description: From a polygon shapefile two TXT files are created: 
-#              - Nodes: list of the IDs and areas of each polygon
+# Description: Two TXT files are created from a multi-features polygon 
+#              shapefile: 
+#              - Nodes: list of the FIDs and areas of each polygon
 #              - Distances: minimum Euclidean distance between every pair of 
 #                polygons
+# Version:     v0.1      
 # Author:      Nonpenso
 # Created:     08-07-2014
 #-------------------------------------------------------------------------------
