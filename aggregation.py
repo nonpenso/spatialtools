@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #==============================================================================
-#title :aggregation.py
-#description :This function reduces the resolution of a raster aggregating
-# pixels by a multiple factor of cells (integer > 1) according
-# to one of these statistical parameters: mean, max, min, sum
-# and standard deviation.
-#author :Giovanni Caudullo
-#date :20140626
-#version :0.1
-#usage :$python aggregation.py input.tif output.tif cellfactor
-#notes :Output is a float 32 TIFF raster
-#python_version :2.7.7
-#license :Creative Commons Attribution-ShareAlike 3.0 Unported License
+#title           :aggregation.py
+#description     :This function reduces the resolution of a raster aggregating 
+#                 pixels by a multiple factor of cells (integer > 1) according 
+#                 to one of these statistical parameters: mean, max, min, sum 
+#                 and standard deviation.
+#author          :Giovanni Caudullo
+#date            :20140626
+#version         :0.1
+#usage           :$python aggregation.py input.tif output.tif cellfactor
+#notes           :Output is a float 32 TIFF raster
+#python_version  :2.7.7
+#license         :Creative Commons Attribution-ShareAlike 3.0 Unported License
 #==============================================================================
 
 import numpy
