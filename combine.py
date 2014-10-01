@@ -1,5 +1,4 @@
 import numpy
-import itertools
 
 def combine(array1, array2):
     assert array1.shape == array2.shape,      'Arrays must have the same shape'
@@ -38,5 +37,4 @@ print output
  [0, 0, 1, 2],
  [1, 1, 1, 2],
  [2, 2, 2, 2]])
-{0: (0, 2), 1: (0, 3), 3: (1, 3)}
 '''
