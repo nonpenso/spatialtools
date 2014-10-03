@@ -57,8 +57,9 @@ def ras_aggregation(inras, outras, cellfact, aggr_type='AVG', expand=True, prop_
     outBand.SetNoDataValue(ND)
     
     ## BLOCK ITERATION
-    xBlockSize = 200 * cellfact
-    yBlockSize = 200 * cellfact
+    blockSizes = band.GetBlockSize()
+    xBlockSize = blockSizes[0] - (blockSizes[0]%cellfact)
+    yBlockSize = blockSizes[1] - (blockSizes[1]%cellfact)
     for i in range(0, rows, yBlockSize):
         if i + yBlockSize < rows:
             numRows = yBlockSize
