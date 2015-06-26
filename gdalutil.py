@@ -14,7 +14,7 @@ def gdalutil(util, command, verbose=True):
     Web page of GDAL utilities:
     http://gdal.org/gdal_utilities.html
     """
-    gdaldir = 'E:\\Python27\\ArcGIS10.2\\Lib\\site-packages\\osgeo\\'
+    gdaldir = 'C:\\Python27\\Lib\\site-packages\\osgeo\\'
     cmd = gdaldir + util + '.exe ' + command
     proc = subprocess.Popen(cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, shell=True)
     output, errors = proc.communicate()
