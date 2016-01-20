@@ -10,21 +10,22 @@
 #              - Nodes: list of the FIDs and areas of each polygon
 #              - Distances: minimum Euclidean distance between every pair of 
 #                polygons
-# Version:     v0.1      
+# Version:     v0.2      
 # Author:      Nonpenso
 # Created:     08-07-2014
+# Updated:     20-01-2016
 #-------------------------------------------------------------------------------
 
 from osgeo import ogr
 from shapely.wkb import loads
 import itertools
 
-def poly_dist(inshp, outfolder):
+def poly_dist(inshp, max_distance=None):
     driver = ogr.GetDriverByName('ESRI Shapefile')
     dataset = driver.Open(inshp, 0)
     layer = dataset.GetLayer()
     shpname = inshp.split('\\')[-1].split('.')[0]
-
+    outfolder = inshp.split(nfile.split('\\')[-1])[0]
     distfile = outfolder + r"\dist_" + shpname + ".txt"
     nodefile = outfolder + r"\node_" + shpname + ".txt"
     d_obj = open(distfile, "w")
@@ -39,7 +40,9 @@ def poly_dist(inshp, outfolder):
         geom2 = loads(feat2.GetGeometryRef().ExportToWkb())
 
         dist = geom1.distance(geom2)
-        d_obj.write(str(ind[0]) + '\t' + str(ind[1]) + '\t' + str(dist) + '\n')
+        if max_distance!=None:
+            if dist < max_distance:
+                d_obj.write(str(ind[0]) + '\t' + str(ind[1]) + '\t' + str(dist) + '\n')
 
         if not ind[0] in checklist:
             checklist.append(ind[0])
